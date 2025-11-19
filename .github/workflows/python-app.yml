@@ -41,4 +41,14 @@ jobs:
     - name: Check script can import dependencies
       run: |
         python -c "import numpy; import matplotlib; print('✅ All dependencies imported successfully')"
+    - name: Run FFT analysis script
+      run: |
+        python fft.py
+        echo "✅ FFT script executed successfully"
+    - name: Upload FFT plot artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: fft-analysis-plot
+        path: fft_analysis.png
+        retention-days: 30
 

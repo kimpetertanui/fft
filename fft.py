@@ -1,5 +1,12 @@
 import numpy as np
+import matplotlib
 import matplotlib.pyplot as plt
+import os
+import sys
+
+# Use non-interactive backend if running in CI or no display available
+if os.environ.get('CI') or not os.environ.get('DISPLAY', sys.platform == 'darwin'):
+    matplotlib.use('Agg')  # Non-interactive backend for headless environments
 
 # Parameters
 fs = 1000  # Sampling frequency
@@ -39,4 +46,12 @@ for i, (f, color) in enumerate(zip(frequencies, colors)):
     axes[i, 1].grid(True, alpha=0.3)
 
 plt.tight_layout()
-plt.show()    
+
+# Save plot if in CI environment, otherwise show it
+if os.environ.get('CI'):
+    output_file = 'fft_analysis.png'
+    plt.savefig(output_file, dpi=150, bbox_inches='tight')
+    print(f"✅ FFT analysis completed successfully!")
+    print(f"📊 Plot saved to: {output_file}")
+else:
+    plt.show()    
