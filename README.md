@@ -166,7 +166,7 @@ The **Fast Fourier Transform (FFT)** is an algorithm that computes the DFT effic
 4. **FFTNet: A Real-Time Speaker-Dependent Neural Vocoder** (2018)
    - Fast audio synthesis using FFT-based architecture
 
-## 🎓 How FFT Relates to Your AI Courses
+## 🎓 Essential FFT Concepts for AI Practitioners
 
 - **Deep Learning**: Feature engineering, efficient convolutions, audio/image preprocessing
 - **Computer Vision**: Image filtering, frequency-based augmentation, compression
