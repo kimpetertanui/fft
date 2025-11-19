@@ -46,7 +46,7 @@ jobs:
         python fft.py
         echo "✅ FFT script executed successfully"
     - name: Upload FFT plot artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: fft-analysis-plot
         path: fft_analysis.png
