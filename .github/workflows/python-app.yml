@@ -37,14 +37,14 @@ jobs:
     - name: Validate FFT script syntax
       run: |
         python -m py_compile fft.py
-        echo "✅ FFT script syntax is valid"
+        echo "FFT script syntax is valid"
     - name: Check script can import dependencies
       run: |
-        python -c "import numpy; import matplotlib; print('✅ All dependencies imported successfully')"
+        python -c "import numpy; import matplotlib; print('All dependencies imported successfully')"
     - name: Run FFT analysis script
       run: |
         python fft.py
-        echo "✅ FFT script executed successfully"
+        echo "FFT script executed successfully"
     - name: Upload FFT plot artifact
       uses: actions/upload-artifact@v4
       with:
