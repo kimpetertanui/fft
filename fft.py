@@ -1,12 +1,18 @@
 import numpy as np
 import matplotlib
-import matplotlib.pyplot as plt
 import os
 import sys
+import warnings
 
-# Use non-interactive backend if running in CI or no display available
-if os.environ.get('CI') or not os.environ.get('DISPLAY', sys.platform == 'darwin'):
+# Use non-interactive backend only if running in CI or no display available
+use_non_interactive = os.environ.get('CI') or not os.environ.get('DISPLAY')
+if use_non_interactive:
     matplotlib.use('Agg')  # Non-interactive backend for headless environments
+
+import matplotlib.pyplot as plt
+
+# Suppress the FigureCanvasAgg warning
+warnings.filterwarnings('ignore', message='.*FigureCanvasAgg is non-interactive.*')
 
 # Parameters
 fs = 1000  # Sampling frequency
@@ -47,11 +53,6 @@ for i, (f, color) in enumerate(zip(frequencies, colors)):
 
 plt.tight_layout()
 
-# Save plot if in CI environment, otherwise show it
-if os.environ.get('CI'):
-    output_file = 'fft_analysis.png'
-    plt.savefig(output_file, dpi=150, bbox_inches='tight')
-    print(f"✅ FFT analysis completed successfully!")
-    print(f"📊 Plot saved to: {output_file}")
-else:
-    plt.show()    
+# Always save the plot to a file
+output_file = 'fft_analysis.png'
+plt.savefig(output_file, dpi=150, bbox_inches='tight')    
