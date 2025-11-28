@@ -4,14 +4,14 @@ import os
 import sys
 import warnings
 
-# Use non-interactive backend only if running in CI or no display available
+
 use_non_interactive = os.environ.get('CI') or not os.environ.get('DISPLAY')
 if use_non_interactive:
-    matplotlib.use('Agg')  # Non-interactive backend for headless environments
+    matplotlib.use('Agg')  
 
 import matplotlib.pyplot as plt
 
-# Suppress the FigureCanvasAgg warning
+
 warnings.filterwarnings('ignore', message='.*FigureCanvasAgg is non-interactive.*')
 
 # Parameters
